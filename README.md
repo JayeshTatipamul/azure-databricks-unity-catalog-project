@@ -56,7 +56,10 @@ Metastore
 └── Catalog
 └── Schema
 └── Tables / Views / Volumes / Functions
+
 ```
+
+![image](Images/Unity_catalog-model.png)
 
 ## ⚙️ Step-by-Step Unity Catalog Implementation
 
@@ -91,6 +94,9 @@ This section documents the **end-to-end implementation steps** followed to set u
 - Used the **same resource group** as Databricks and Storage Account.
 - This access connector acts as the **managed identity** for Unity Catalog to access storage.
 
+![image](Images/Resource_Group.png)
+
+
 ---
 
 ### 5️⃣ Grant Storage Access to Access Connector
@@ -108,12 +114,14 @@ This section documents the **end-to-end implementation steps** followed to set u
   - Access Connector Object ID
 - Assigned **all required Databricks workspaces** to the metastore.
 
+![image](Images/creted_metastore.png)
+
 ---
 
 ### 7️⃣ Metastore Validation
 - Logged in to the **Azure Databricks Workspace UI**.
 - Navigated to **Catalog → Settings**.
-- Verified that the **Unity Catalog Metastore is attached** to the workspace.
+- Verified that the **Unity Catalog Metastore is attached** to the workspace
 
 ---
 
@@ -124,6 +132,8 @@ This section documents the **end-to-end implementation steps** followed to set u
 CREATE CATALOG IF NOT EXISTS enterprise_catalog;
 
 ```
+![image](Images/Catalog_Explorer.png)
+
 ---
 ### 9️⃣ Additional Storage Containers
 
@@ -135,6 +145,8 @@ enriched
 
 These containers are used for external data storage and organization.
 
+![image](Images/storage_account.png)
+
 ---
 ### 🔟 Storage Credentials & External Locations
 
@@ -145,6 +157,8 @@ Established connectivity between:
 ADLS containers
 
 Unity Catalog objects (catalogs)
+
+![image](Images/Create_Credential.png)
 
 ---
 ### 1️⃣1️⃣ Storage Hierarchy Validation
@@ -159,9 +173,11 @@ Schema-level storage
 
 Object-level (table / volume) storage
 
+![image](Images/managed-storage.png)
+
 ---
 
-1️⃣2️⃣ Volumes Creation
+### 1️⃣2️⃣ Volumes Creation
 
 Created Unity Catalog Volumes to manage non-tabular data.
 
@@ -169,7 +185,7 @@ Verified read/write access through Databricks workspace.
 
 ---
 
-1️⃣3️⃣ Data Masking Function
+### 1️⃣3️⃣ Data Masking Function
 
 Implemented a Unity Catalog function for data masking.
 
